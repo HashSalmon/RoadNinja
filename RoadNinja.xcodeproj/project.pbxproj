@@ -1,0 +1,487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CAFD5EDE18ED2A7B000E9E9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */; };
+		CAFD5EE018ED2A7B000E9E9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EDF18ED2A7B000E9E9A /* CoreGraphics.framework */; };
+		CAFD5EE218ED2A7B000E9E9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EE118ED2A7B000E9E9A /* UIKit.framework */; };
+		CAFD5EE418ED2A7B000E9E9A /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EE318ED2A7B000E9E9A /* SpriteKit.framework */; };
+		CAFD5EEA18ED2A7B000E9E9A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5EE818ED2A7B000E9E9A /* InfoPlist.strings */; };
+		CAFD5EEC18ED2A7B000E9E9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EEB18ED2A7B000E9E9A /* main.m */; };
+		CAFD5EF018ED2A7B000E9E9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EEF18ED2A7B000E9E9A /* AppDelegate.m */; };
+		CAFD5EF318ED2A7B000E9E9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5EF118ED2A7B000E9E9A /* Main.storyboard */; };
+		CAFD5EF618ED2A7B000E9E9A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EF518ED2A7B000E9E9A /* ViewController.m */; };
+		CAFD5EF918ED2A7B000E9E9A /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EF818ED2A7B000E9E9A /* MyScene.m */; };
+		CAFD5EFB18ED2A7B000E9E9A /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5EFA18ED2A7B000E9E9A /* Spaceship.png */; };
+		CAFD5EFD18ED2A7B000E9E9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5EFC18ED2A7B000E9E9A /* Images.xcassets */; };
+		CAFD5F0418ED2A7B000E9E9A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5F0318ED2A7B000E9E9A /* XCTest.framework */; };
+		CAFD5F0518ED2A7B000E9E9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */; };
+		CAFD5F0618ED2A7B000E9E9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EE118ED2A7B000E9E9A /* UIKit.framework */; };
+		CAFD5F0E18ED2A7B000E9E9A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5F0C18ED2A7B000E9E9A /* InfoPlist.strings */; };
+		CAFD5F1018ED2A7B000E9E9A /* RoadNinjaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5F0F18ED2A7B000E9E9A /* RoadNinjaTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAFD5F0718ED2A7B000E9E9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAFD5ED218ED2A7B000E9E9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAFD5ED918ED2A7B000E9E9A;
+			remoteInfo = RoadNinja;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CAFD5EDA18ED2A7B000E9E9A /* RoadNinja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoadNinja.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CAFD5EDF18ED2A7B000E9E9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CAFD5EE118ED2A7B000E9E9A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CAFD5EE318ED2A7B000E9E9A /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		CAFD5EE718ED2A7B000E9E9A /* RoadNinja-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RoadNinja-Info.plist"; sourceTree = "<group>"; };
+		CAFD5EE918ED2A7B000E9E9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CAFD5EEB18ED2A7B000E9E9A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CAFD5EED18ED2A7B000E9E9A /* RoadNinja-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RoadNinja-Prefix.pch"; sourceTree = "<group>"; };
+		CAFD5EEE18ED2A7B000E9E9A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CAFD5EEF18ED2A7B000E9E9A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CAFD5EF218ED2A7B000E9E9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CAFD5EF418ED2A7B000E9E9A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CAFD5EF518ED2A7B000E9E9A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CAFD5EF718ED2A7B000E9E9A /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
+		CAFD5EF818ED2A7B000E9E9A /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		CAFD5EFA18ED2A7B000E9E9A /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		CAFD5EFC18ED2A7B000E9E9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CAFD5F0218ED2A7B000E9E9A /* RoadNinjaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoadNinjaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAFD5F0318ED2A7B000E9E9A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CAFD5F0B18ED2A7B000E9E9A /* RoadNinjaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RoadNinjaTests-Info.plist"; sourceTree = "<group>"; };
+		CAFD5F0D18ED2A7B000E9E9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CAFD5F0F18ED2A7B000E9E9A /* RoadNinjaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoadNinjaTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CAFD5ED718ED2A7B000E9E9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAFD5EE018ED2A7B000E9E9A /* CoreGraphics.framework in Frameworks */,
+				CAFD5EE218ED2A7B000E9E9A /* UIKit.framework in Frameworks */,
+				CAFD5EE418ED2A7B000E9E9A /* SpriteKit.framework in Frameworks */,
+				CAFD5EDE18ED2A7B000E9E9A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAFD5EFF18ED2A7B000E9E9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAFD5F0418ED2A7B000E9E9A /* XCTest.framework in Frameworks */,
+				CAFD5F0618ED2A7B000E9E9A /* UIKit.framework in Frameworks */,
+				CAFD5F0518ED2A7B000E9E9A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CAFD5ED118ED2A7B000E9E9A = {
+			isa = PBXGroup;
+			children = (
+				CAFD5EE518ED2A7B000E9E9A /* RoadNinja */,
+				CAFD5F0918ED2A7B000E9E9A /* RoadNinjaTests */,
+				CAFD5EDC18ED2A7B000E9E9A /* Frameworks */,
+				CAFD5EDB18ED2A7B000E9E9A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CAFD5EDB18ED2A7B000E9E9A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAFD5EDA18ED2A7B000E9E9A /* RoadNinja.app */,
+				CAFD5F0218ED2A7B000E9E9A /* RoadNinjaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CAFD5EDC18ED2A7B000E9E9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */,
+				CAFD5EDF18ED2A7B000E9E9A /* CoreGraphics.framework */,
+				CAFD5EE118ED2A7B000E9E9A /* UIKit.framework */,
+				CAFD5EE318ED2A7B000E9E9A /* SpriteKit.framework */,
+				CAFD5F0318ED2A7B000E9E9A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CAFD5EE518ED2A7B000E9E9A /* RoadNinja */ = {
+			isa = PBXGroup;
+			children = (
+				CAFD5EEE18ED2A7B000E9E9A /* AppDelegate.h */,
+				CAFD5EEF18ED2A7B000E9E9A /* AppDelegate.m */,
+				CAFD5EF118ED2A7B000E9E9A /* Main.storyboard */,
+				CAFD5EF418ED2A7B000E9E9A /* ViewController.h */,
+				CAFD5EF518ED2A7B000E9E9A /* ViewController.m */,
+				CAFD5EF718ED2A7B000E9E9A /* MyScene.h */,
+				CAFD5EF818ED2A7B000E9E9A /* MyScene.m */,
+				CAFD5EFA18ED2A7B000E9E9A /* Spaceship.png */,
+				CAFD5EFC18ED2A7B000E9E9A /* Images.xcassets */,
+				CAFD5EE618ED2A7B000E9E9A /* Supporting Files */,
+			);
+			path = RoadNinja;
+			sourceTree = "<group>";
+		};
+		CAFD5EE618ED2A7B000E9E9A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CAFD5EE718ED2A7B000E9E9A /* RoadNinja-Info.plist */,
+				CAFD5EE818ED2A7B000E9E9A /* InfoPlist.strings */,
+				CAFD5EEB18ED2A7B000E9E9A /* main.m */,
+				CAFD5EED18ED2A7B000E9E9A /* RoadNinja-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CAFD5F0918ED2A7B000E9E9A /* RoadNinjaTests */ = {
+			isa = PBXGroup;
+			children = (
+				CAFD5F0F18ED2A7B000E9E9A /* RoadNinjaTests.m */,
+				CAFD5F0A18ED2A7B000E9E9A /* Supporting Files */,
+			);
+			path = RoadNinjaTests;
+			sourceTree = "<group>";
+		};
+		CAFD5F0A18ED2A7B000E9E9A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CAFD5F0B18ED2A7B000E9E9A /* RoadNinjaTests-Info.plist */,
+				CAFD5F0C18ED2A7B000E9E9A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CAFD5ED918ED2A7B000E9E9A /* RoadNinja */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAFD5F1318ED2A7B000E9E9A /* Build configuration list for PBXNativeTarget "RoadNinja" */;
+			buildPhases = (
+				CAFD5ED618ED2A7B000E9E9A /* Sources */,
+				CAFD5ED718ED2A7B000E9E9A /* Frameworks */,
+				CAFD5ED818ED2A7B000E9E9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoadNinja;
+			productName = RoadNinja;
+			productReference = CAFD5EDA18ED2A7B000E9E9A /* RoadNinja.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CAFD5F0118ED2A7B000E9E9A /* RoadNinjaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAFD5F1618ED2A7B000E9E9A /* Build configuration list for PBXNativeTarget "RoadNinjaTests" */;
+			buildPhases = (
+				CAFD5EFE18ED2A7B000E9E9A /* Sources */,
+				CAFD5EFF18ED2A7B000E9E9A /* Frameworks */,
+				CAFD5F0018ED2A7B000E9E9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAFD5F0818ED2A7B000E9E9A /* PBXTargetDependency */,
+			);
+			name = RoadNinjaTests;
+			productName = RoadNinjaTests;
+			productReference = CAFD5F0218ED2A7B000E9E9A /* RoadNinjaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CAFD5ED218ED2A7B000E9E9A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "JINGGONG ZHENG";
+				TargetAttributes = {
+					CAFD5F0118ED2A7B000E9E9A = {
+						TestTargetID = CAFD5ED918ED2A7B000E9E9A;
+					};
+				};
+			};
+			buildConfigurationList = CAFD5ED518ED2A7B000E9E9A /* Build configuration list for PBXProject "RoadNinja" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CAFD5ED118ED2A7B000E9E9A;
+			productRefGroup = CAFD5EDB18ED2A7B000E9E9A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CAFD5ED918ED2A7B000E9E9A /* RoadNinja */,
+				CAFD5F0118ED2A7B000E9E9A /* RoadNinjaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAFD5ED818ED2A7B000E9E9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAFD5EEA18ED2A7B000E9E9A /* InfoPlist.strings in Resources */,
+				CAFD5EFD18ED2A7B000E9E9A /* Images.xcassets in Resources */,
+				CAFD5EFB18ED2A7B000E9E9A /* Spaceship.png in Resources */,
+				CAFD5EF318ED2A7B000E9E9A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAFD5F0018ED2A7B000E9E9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAFD5F0E18ED2A7B000E9E9A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CAFD5ED618ED2A7B000E9E9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAFD5EF918ED2A7B000E9E9A /* MyScene.m in Sources */,
+				CAFD5EF618ED2A7B000E9E9A /* ViewController.m in Sources */,
+				CAFD5EF018ED2A7B000E9E9A /* AppDelegate.m in Sources */,
+				CAFD5EEC18ED2A7B000E9E9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAFD5EFE18ED2A7B000E9E9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAFD5F1018ED2A7B000E9E9A /* RoadNinjaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAFD5F0818ED2A7B000E9E9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAFD5ED918ED2A7B000E9E9A /* RoadNinja */;
+			targetProxy = CAFD5F0718ED2A7B000E9E9A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CAFD5EE818ED2A7B000E9E9A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAFD5EE918ED2A7B000E9E9A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CAFD5EF118ED2A7B000E9E9A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAFD5EF218ED2A7B000E9E9A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CAFD5F0C18ED2A7B000E9E9A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAFD5F0D18ED2A7B000E9E9A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CAFD5F1118ED2A7B000E9E9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CAFD5F1218ED2A7B000E9E9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CAFD5F1418ED2A7B000E9E9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RoadNinja/RoadNinja-Prefix.pch";
+				INFOPLIST_FILE = "RoadNinja/RoadNinja-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CAFD5F1518ED2A7B000E9E9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RoadNinja/RoadNinja-Prefix.pch";
+				INFOPLIST_FILE = "RoadNinja/RoadNinja-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CAFD5F1718ED2A7B000E9E9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RoadNinja.app/RoadNinja";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RoadNinja/RoadNinja-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RoadNinjaTests/RoadNinjaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		CAFD5F1818ED2A7B000E9E9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RoadNinja.app/RoadNinja";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RoadNinja/RoadNinja-Prefix.pch";
+				INFOPLIST_FILE = "RoadNinjaTests/RoadNinjaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CAFD5ED518ED2A7B000E9E9A /* Build configuration list for PBXProject "RoadNinja" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAFD5F1118ED2A7B000E9E9A /* Debug */,
+				CAFD5F1218ED2A7B000E9E9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAFD5F1318ED2A7B000E9E9A /* Build configuration list for PBXNativeTarget "RoadNinja" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAFD5F1418ED2A7B000E9E9A /* Debug */,
+				CAFD5F1518ED2A7B000E9E9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CAFD5F1618ED2A7B000E9E9A /* Build configuration list for PBXNativeTarget "RoadNinjaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAFD5F1718ED2A7B000E9E9A /* Debug */,
+				CAFD5F1818ED2A7B000E9E9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CAFD5ED218ED2A7B000E9E9A /* Project object */;
+}
