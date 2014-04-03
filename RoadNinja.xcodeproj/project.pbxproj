@@ -17,7 +17,6 @@
 		CAFD5EF318ED2A7B000E9E9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5EF118ED2A7B000E9E9A /* Main.storyboard */; };
 		CAFD5EF618ED2A7B000E9E9A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EF518ED2A7B000E9E9A /* ViewController.m */; };
 		CAFD5EF918ED2A7B000E9E9A /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EF818ED2A7B000E9E9A /* MyScene.m */; };
-		CAFD5EFB18ED2A7B000E9E9A /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5EFA18ED2A7B000E9E9A /* Spaceship.png */; };
 		CAFD5EFD18ED2A7B000E9E9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5EFC18ED2A7B000E9E9A /* Images.xcassets */; };
 		CAFD5F0418ED2A7B000E9E9A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5F0318ED2A7B000E9E9A /* XCTest.framework */; };
 		CAFD5F0518ED2A7B000E9E9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */; };
@@ -53,7 +52,6 @@
 		CAFD5EF518ED2A7B000E9E9A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CAFD5EF718ED2A7B000E9E9A /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
 		CAFD5EF818ED2A7B000E9E9A /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
-		CAFD5EFA18ED2A7B000E9E9A /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		CAFD5EFC18ED2A7B000E9E9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CAFD5F0218ED2A7B000E9E9A /* RoadNinjaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoadNinjaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFD5F0318ED2A7B000E9E9A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -128,7 +126,6 @@
 				CAFD5EF518ED2A7B000E9E9A /* ViewController.m */,
 				CAFD5EF718ED2A7B000E9E9A /* MyScene.h */,
 				CAFD5EF818ED2A7B000E9E9A /* MyScene.m */,
-				CAFD5EFA18ED2A7B000E9E9A /* Spaceship.png */,
 				CAFD5EFC18ED2A7B000E9E9A /* Images.xcassets */,
 				CAFD5EE618ED2A7B000E9E9A /* Supporting Files */,
 			);
@@ -242,7 +239,6 @@
 			files = (
 				CAFD5EEA18ED2A7B000E9E9A /* InfoPlist.strings in Resources */,
 				CAFD5EFD18ED2A7B000E9E9A /* Images.xcassets in Resources */,
-				CAFD5EFB18ED2A7B000E9E9A /* Spaceship.png in Resources */,
 				CAFD5EF318ED2A7B000E9E9A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +468,7 @@
 				CAFD5F1518ED2A7B000E9E9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CAFD5F1618ED2A7B000E9E9A /* Build configuration list for PBXNativeTarget "RoadNinjaTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +477,7 @@
 				CAFD5F1818ED2A7B000E9E9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
