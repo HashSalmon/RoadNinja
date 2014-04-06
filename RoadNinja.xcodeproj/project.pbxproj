@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA63A2DD18F1B05C00DFF47C /* RoadNinjaGameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CA63A2DC18F1B05C00DFF47C /* RoadNinjaGameOverScene.m */; };
+		CA63A2E018F1B08D00DFF47C /* RoadNinjaMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CA63A2DF18F1B08D00DFF47C /* RoadNinjaMenuScene.m */; };
+		CA63A31918F1B85800DFF47C /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = CA63A31018F1B85800DFF47C /* blue.png */; };
+		CA63A31A18F1B85800DFF47C /* canCar.png in Resources */ = {isa = PBXBuildFile; fileRef = CA63A31118F1B85800DFF47C /* canCar.png */; };
+		CA63A31B18F1B85800DFF47C /* greenCar.png in Resources */ = {isa = PBXBuildFile; fileRef = CA63A31218F1B85800DFF47C /* greenCar.png */; };
+		CA63A31C18F1B85800DFF47C /* homeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CA63A31318F1B85800DFF47C /* homeButton.png */; };
+		CA63A31D18F1B85800DFF47C /* ninja.png in Resources */ = {isa = PBXBuildFile; fileRef = CA63A31418F1B85800DFF47C /* ninja.png */; };
+		CA63A31E18F1B85800DFF47C /* orangeCar.png in Resources */ = {isa = PBXBuildFile; fileRef = CA63A31518F1B85800DFF47C /* orangeCar.png */; };
+		CA63A31F18F1B85800DFF47C /* purpleCar.png in Resources */ = {isa = PBXBuildFile; fileRef = CA63A31618F1B85800DFF47C /* purpleCar.png */; };
+		CA63A32018F1B85800DFF47C /* redCar.png in Resources */ = {isa = PBXBuildFile; fileRef = CA63A31718F1B85800DFF47C /* redCar.png */; };
+		CA63A32118F1B85800DFF47C /* roadColor.png in Resources */ = {isa = PBXBuildFile; fileRef = CA63A31818F1B85800DFF47C /* roadColor.png */; };
 		CAFD5EDE18ED2A7B000E9E9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */; };
 		CAFD5EE018ED2A7B000E9E9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EDF18ED2A7B000E9E9A /* CoreGraphics.framework */; };
 		CAFD5EE218ED2A7B000E9E9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EE118ED2A7B000E9E9A /* UIKit.framework */; };
@@ -16,7 +27,7 @@
 		CAFD5EF018ED2A7B000E9E9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EEF18ED2A7B000E9E9A /* AppDelegate.m */; };
 		CAFD5EF318ED2A7B000E9E9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5EF118ED2A7B000E9E9A /* Main.storyboard */; };
 		CAFD5EF618ED2A7B000E9E9A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EF518ED2A7B000E9E9A /* ViewController.m */; };
-		CAFD5EF918ED2A7B000E9E9A /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EF818ED2A7B000E9E9A /* MyScene.m */; };
+		CAFD5EF918ED2A7B000E9E9A /* RoadNinjaGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFD5EF818ED2A7B000E9E9A /* RoadNinjaGameScene.m */; };
 		CAFD5EFD18ED2A7B000E9E9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAFD5EFC18ED2A7B000E9E9A /* Images.xcassets */; };
 		CAFD5F0418ED2A7B000E9E9A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5F0318ED2A7B000E9E9A /* XCTest.framework */; };
 		CAFD5F0518ED2A7B000E9E9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */; };
@@ -36,6 +47,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA63A2DB18F1B05C00DFF47C /* RoadNinjaGameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadNinjaGameOverScene.h; sourceTree = "<group>"; };
+		CA63A2DC18F1B05C00DFF47C /* RoadNinjaGameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadNinjaGameOverScene.m; sourceTree = "<group>"; };
+		CA63A2DE18F1B08D00DFF47C /* RoadNinjaMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadNinjaMenuScene.h; sourceTree = "<group>"; };
+		CA63A2DF18F1B08D00DFF47C /* RoadNinjaMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadNinjaMenuScene.m; sourceTree = "<group>"; };
+		CA63A31018F1B85800DFF47C /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
+		CA63A31118F1B85800DFF47C /* canCar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canCar.png; sourceTree = "<group>"; };
+		CA63A31218F1B85800DFF47C /* greenCar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenCar.png; sourceTree = "<group>"; };
+		CA63A31318F1B85800DFF47C /* homeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeButton.png; sourceTree = "<group>"; };
+		CA63A31418F1B85800DFF47C /* ninja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ninja.png; sourceTree = "<group>"; };
+		CA63A31518F1B85800DFF47C /* orangeCar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeCar.png; sourceTree = "<group>"; };
+		CA63A31618F1B85800DFF47C /* purpleCar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purpleCar.png; sourceTree = "<group>"; };
+		CA63A31718F1B85800DFF47C /* redCar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redCar.png; sourceTree = "<group>"; };
+		CA63A31818F1B85800DFF47C /* roadColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadColor.png; sourceTree = "<group>"; };
 		CAFD5EDA18ED2A7B000E9E9A /* RoadNinja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoadNinja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CAFD5EDF18ED2A7B000E9E9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -50,8 +74,8 @@
 		CAFD5EF218ED2A7B000E9E9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAFD5EF418ED2A7B000E9E9A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CAFD5EF518ED2A7B000E9E9A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CAFD5EF718ED2A7B000E9E9A /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
-		CAFD5EF818ED2A7B000E9E9A /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		CAFD5EF718ED2A7B000E9E9A /* RoadNinjaGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoadNinjaGameScene.h; sourceTree = "<group>"; };
+		CAFD5EF818ED2A7B000E9E9A /* RoadNinjaGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoadNinjaGameScene.m; sourceTree = "<group>"; };
 		CAFD5EFC18ED2A7B000E9E9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CAFD5F0218ED2A7B000E9E9A /* RoadNinjaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoadNinjaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFD5F0318ED2A7B000E9E9A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -85,6 +109,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA63A30F18F1B81700DFF47C /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				CA63A31018F1B85800DFF47C /* blue.png */,
+				CA63A31118F1B85800DFF47C /* canCar.png */,
+				CA63A31218F1B85800DFF47C /* greenCar.png */,
+				CA63A31318F1B85800DFF47C /* homeButton.png */,
+				CA63A31418F1B85800DFF47C /* ninja.png */,
+				CA63A31518F1B85800DFF47C /* orangeCar.png */,
+				CA63A31618F1B85800DFF47C /* purpleCar.png */,
+				CA63A31718F1B85800DFF47C /* redCar.png */,
+				CA63A31818F1B85800DFF47C /* roadColor.png */,
+			);
+			name = Art;
+			sourceTree = "<group>";
+		};
 		CAFD5ED118ED2A7B000E9E9A = {
 			isa = PBXGroup;
 			children = (
@@ -119,13 +159,18 @@
 		CAFD5EE518ED2A7B000E9E9A /* RoadNinja */ = {
 			isa = PBXGroup;
 			children = (
+				CA63A30F18F1B81700DFF47C /* Art */,
 				CAFD5EEE18ED2A7B000E9E9A /* AppDelegate.h */,
 				CAFD5EEF18ED2A7B000E9E9A /* AppDelegate.m */,
 				CAFD5EF118ED2A7B000E9E9A /* Main.storyboard */,
 				CAFD5EF418ED2A7B000E9E9A /* ViewController.h */,
 				CAFD5EF518ED2A7B000E9E9A /* ViewController.m */,
-				CAFD5EF718ED2A7B000E9E9A /* MyScene.h */,
-				CAFD5EF818ED2A7B000E9E9A /* MyScene.m */,
+				CA63A2DE18F1B08D00DFF47C /* RoadNinjaMenuScene.h */,
+				CA63A2DF18F1B08D00DFF47C /* RoadNinjaMenuScene.m */,
+				CAFD5EF718ED2A7B000E9E9A /* RoadNinjaGameScene.h */,
+				CAFD5EF818ED2A7B000E9E9A /* RoadNinjaGameScene.m */,
+				CA63A2DB18F1B05C00DFF47C /* RoadNinjaGameOverScene.h */,
+				CA63A2DC18F1B05C00DFF47C /* RoadNinjaGameOverScene.m */,
 				CAFD5EFC18ED2A7B000E9E9A /* Images.xcassets */,
 				CAFD5EE618ED2A7B000E9E9A /* Supporting Files */,
 			);
@@ -237,9 +282,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA63A31B18F1B85800DFF47C /* greenCar.png in Resources */,
+				CA63A32118F1B85800DFF47C /* roadColor.png in Resources */,
+				CA63A32018F1B85800DFF47C /* redCar.png in Resources */,
 				CAFD5EEA18ED2A7B000E9E9A /* InfoPlist.strings in Resources */,
 				CAFD5EFD18ED2A7B000E9E9A /* Images.xcassets in Resources */,
+				CA63A31C18F1B85800DFF47C /* homeButton.png in Resources */,
+				CA63A31F18F1B85800DFF47C /* purpleCar.png in Resources */,
+				CA63A31D18F1B85800DFF47C /* ninja.png in Resources */,
 				CAFD5EF318ED2A7B000E9E9A /* Main.storyboard in Resources */,
+				CA63A31A18F1B85800DFF47C /* canCar.png in Resources */,
+				CA63A31918F1B85800DFF47C /* blue.png in Resources */,
+				CA63A31E18F1B85800DFF47C /* orangeCar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,10 +312,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAFD5EF918ED2A7B000E9E9A /* MyScene.m in Sources */,
+				CAFD5EF918ED2A7B000E9E9A /* RoadNinjaGameScene.m in Sources */,
 				CAFD5EF618ED2A7B000E9E9A /* ViewController.m in Sources */,
 				CAFD5EF018ED2A7B000E9E9A /* AppDelegate.m in Sources */,
 				CAFD5EEC18ED2A7B000E9E9A /* main.m in Sources */,
+				CA63A2E018F1B08D00DFF47C /* RoadNinjaMenuScene.m in Sources */,
+				CA63A2DD18F1B05C00DFF47C /* RoadNinjaGameOverScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

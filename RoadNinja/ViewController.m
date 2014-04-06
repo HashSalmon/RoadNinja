@@ -7,37 +7,46 @@
 //
 
 #import "ViewController.h"
-#import "MyScene.h"
+#import "RoadNinjaGameScene.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
     // Configure the view.
-    SKView * skView = (SKView *)self.view;
+    SKView *skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
-    // Create and configure the scene.
-    SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    // create and configure the scene
+    SKScene *roadNinjaGameScene = [RoadNinjaGameScene sceneWithSize:skView.bounds.size];
+    roadNinjaGameScene.scaleMode = SKSceneScaleModeAspectFill;
     
-    // Present the scene.
-    [skView presentScene:scene];
+    // present the scene
+    [skView presentScene:roadNinjaGameScene];
 }
 
-- (BOOL)shouldAutorotate
+- (BOOL)prefersStatusBarHidden
 {
     return YES;
 }
 
+
 - (NSUInteger)supportedInterfaceOrientations
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
         return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
+    }
+    else
+    {
         return UIInterfaceOrientationMaskAll;
     }
 }
