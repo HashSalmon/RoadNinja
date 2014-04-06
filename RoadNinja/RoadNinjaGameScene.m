@@ -7,8 +7,7 @@
 //
 
 #import "RoadNinjaGameScene.h"
-#import "RoadNinjaGameOverScene.h"
-
+#import "RoadNinjaMenuScene.h"
 
 @implementation RoadNinjaGameScene
 {
@@ -67,12 +66,11 @@
     
     if ([node.name isEqualToString:@"menu"])
     {
-        NSLog(@"Menu");
         SKTransition *transitionAnimation = [SKTransition doorsCloseVerticalWithDuration:0.5];
-        CGSize gameOverSceneSize = CGSizeMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height * 0.5);
-        RoadNinjaGameOverScene *gameOverScene = [RoadNinjaGameOverScene sceneWithSize:gameOverSceneSize];
-        gameOverScene.scaleMode = SKSceneScaleModeAspectFill;
-        [self.view presentScene:gameOverScene transition:transitionAnimation];
+        //CGSize gameOverSceneSize = CGSizeMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height * 0.5);
+        RoadNinjaMenuScene *gameMenuScene = [RoadNinjaMenuScene sceneWithSize:self.size];
+        gameMenuScene.scaleMode = SKSceneScaleModeAspectFill;
+        [self.view presentScene:gameMenuScene transition:transitionAnimation];
     }
 }
 
