@@ -31,8 +31,6 @@
     
     // present the scene
     [skView presentScene:roadNinjaGameScene];
-    
-    
 }
 
 - (BOOL)prefersStatusBarHidden
