@@ -19,6 +19,9 @@ static const float NinjaVelocity = 0.05f;
 static const int LeftRoadBorderWidth = 80;
 static const int RightRoadBorderWidth = 240;
 
+// move duration
+static const float MoveDuration = 0.3f;
+
 // vector addition
 static inline CGPoint CGPointAdd(const CGPoint a, const CGPoint b)
 {
@@ -53,22 +56,17 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     
     SKAction *_moveLeft;
     SKAction *_moveRight;
+    
+    NSMutableArray *_carXLocations;
+    NSInteger carYLocation;
 }
 
 -(id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size])
     {
-        // calculate the label X and Y
-        distanceLabelX = 20.0f;
-        distanceLabelY = size.height - 25.0f;
-        menuButtonX = size.width - 18.0f;
-        menuButtonY = size.height - 20.0f;
-        backgroundImageX = 0.0f;
-        backgroundImageY = 25.0f;
-        ninjaInitialPositionX = self.size.width * 0.5f;
-        ninjaInitialPositionY = self.size.height * 0.2f;
-        _distance = 0;
+        // initialization
+        [self initializeVariablesAndLocations:size];
         
         // background color
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
@@ -76,34 +74,94 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
         // initialize background
         [self initializingScrollingBackground];
         
-        // add the distance label
-        _distanceLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        _distanceLabel.fontColor = [SKColor redColor];
-        _distanceLabel.text = [NSString stringWithFormat:@"%dm", _distance];
-        _distanceLabel.fontSize = 20.0;
-        _distanceLabel.position = CGPointMake(distanceLabelX, distanceLabelY);
-        _distanceLabel.name = @"distance";
-        [self addChild:_distanceLabel];
-        
-        // add the menu button
-        _menuButton = [[SKSpriteNode alloc] initWithImageNamed:@"menu_button"];
-        [_menuButton setScale:0.18];
-        _menuButton.position = CGPointMake(menuButtonX, menuButtonY);
-        _menuButton.name = @"menu";
-        [self addChild:_menuButton];
-        
-        // add the ninja
-        _ninja = [[SKSpriteNode alloc] initWithImageNamed:@"ninja"];
-        _ninja.position = CGPointMake(ninjaInitialPositionX, ninjaInitialPositionY);
-        _ninja.name = @"ninja";
-        [self addChild:_ninja];
+        // add nodes
+        [self addDistanceLabel];
+        [self addMenuButton];
+        [self addNinja];
+        [self addCars];
         
         // actions
-        _moveLeft = [SKAction moveByX:-_ninja.size.width y:0 duration:0.2f];
-        _moveRight = [SKAction moveByX:_ninja.size.width y:0 duration:0.2f];
+        _moveLeft = [SKAction moveByX:-_ninja.size.width y:0 duration:MoveDuration];
+        _moveRight = [SKAction moveByX:_ninja.size.width y:0 duration:MoveDuration];
     }
     
     return self;
+}
+
+// initialize variables and locations
+- (void)initializeVariablesAndLocations:(CGSize)size
+{
+    // calculate the label X and Y
+    distanceLabelX = 20.0f;
+    distanceLabelY = size.height - 25.0f;
+    menuButtonX = size.width - 18.0f;
+    menuButtonY = size.height - 20.0f;
+    backgroundImageX = 0.0f;
+    backgroundImageY = 25.0f;
+    ninjaInitialPositionX = self.size.width * 0.5f;
+    ninjaInitialPositionY = self.size.height * 0.2f;
+    _distance = 0;
+    
+    _carXLocations = [[NSMutableArray alloc] initWithCapacity:4];
+    [_carXLocations addObject:[NSNumber numberWithInt:59]];
+    [_carXLocations addObject:[NSNumber numberWithInt:107]];
+    [_carXLocations addObject:[NSNumber numberWithInt:156]];
+    [_carXLocations addObject:[NSNumber numberWithInt:205]];
+    [_carXLocations addObject:[NSNumber numberWithInt:255]];
+    carYLocation = 280.0f;
+}
+
+// add distance label on the screen
+- (void)addDistanceLabel
+{
+    // add the distance label
+    _distanceLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    _distanceLabel.fontColor = [SKColor redColor];
+    _distanceLabel.text = [NSString stringWithFormat:@"%fm", _distance];
+    _distanceLabel.fontSize = 20.0;
+    _distanceLabel.position = CGPointMake(distanceLabelX, distanceLabelY);
+    _distanceLabel.name = @"distance";
+    [self addChild:_distanceLabel];
+}
+
+// add menu button on the screen
+- (void)addMenuButton
+{
+    // add the menu button
+    _menuButton = [[SKSpriteNode alloc] initWithImageNamed:@"menu_button"];
+    [_menuButton setScale:0.18];
+    _menuButton.position = CGPointMake(menuButtonX, menuButtonY);
+    _menuButton.name = @"menu";
+    [self addChild:_menuButton];
+}
+
+// add ninja
+- (void)addNinja
+{
+    // add the ninja
+    _ninja = [[SKSpriteNode alloc] initWithImageNamed:@"ninja"];
+    [_ninja setScale:0.7f];
+    _ninja.position = CGPointMake(ninjaInitialPositionX, ninjaInitialPositionY);
+    _ninja.name = @"ninja";
+    [self addChild:_ninja];
+}
+
+// add cars
+- (void)addCars
+{
+    NSInteger carNumber = arc4random() % 6 + 1;
+    NSString *carName = [NSString stringWithFormat:@"car%d",carNumber];
+    SKSpriteNode *car = [SKSpriteNode spriteNodeWithImageNamed:carName];
+    car.name = @"car";
+    [car setScale:0.6];
+    // randomly choose a starting location
+    int index = arc4random() % 5;
+    NSNumber *carXNumber = _carXLocations[index];
+    NSInteger carXLocation = [carXNumber integerValue];
+    
+    car.position = CGPointMake(carXLocation, carYLocation);
+    
+    [self addChild:car];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
