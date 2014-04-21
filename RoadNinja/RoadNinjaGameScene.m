@@ -12,6 +12,13 @@
 // The background moving speed
 static const float BackgroundVelocity = 150.0f;
 
+// The ninja's running speed
+static const float NinjaVelocity = 0.05f;
+
+// the road border width
+static const int LeftRoadBorderWidth = 80;
+static const int RightRoadBorderWidth = 240;
+
 // vector addition
 static inline CGPoint CGPointAdd(const CGPoint a, const CGPoint b)
 {
@@ -26,9 +33,10 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
 
 @implementation RoadNinjaGameScene
 {
-    SKLabelNode *distanceLabel;
-    SKSpriteNode *menuButton;
+    SKLabelNode *_distanceLabel;
+    SKSpriteNode *_menuButton;
     SKSpriteNode *_ninja;
+    
     CGFloat distanceLabelX;
     CGFloat distanceLabelY;
     CGFloat menuButtonX;
@@ -37,9 +45,14 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     CGFloat backgroundImageY;
     CGFloat ninjaInitialPositionX;
     CGFloat ninjaInitialPositionY;
+    
+    CGFloat _distance;
     NSTimeInterval _delta;
     NSTimeInterval _lastUpdateTime;
-
+    NSTimer *_timer;
+    
+    SKAction *_moveLeft;
+    SKAction *_moveRight;
 }
 
 -(id)initWithSize:(CGSize)size
@@ -55,6 +68,7 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
         backgroundImageY = 25.0f;
         ninjaInitialPositionX = self.size.width * 0.5f;
         ninjaInitialPositionY = self.size.height * 0.2f;
+        _distance = 0;
         
         // background color
         self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
@@ -63,25 +77,30 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
         [self initializingScrollingBackground];
         
         // add the distance label
-        distanceLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        distanceLabel.fontColor = [SKColor redColor];
-        distanceLabel.text = @"0m";
-        distanceLabel.fontSize = 20.0;
-        distanceLabel.position = CGPointMake(distanceLabelX, distanceLabelY);
-        [self addChild:distanceLabel];
+        _distanceLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        _distanceLabel.fontColor = [SKColor redColor];
+        _distanceLabel.text = [NSString stringWithFormat:@"%dm", _distance];
+        _distanceLabel.fontSize = 20.0;
+        _distanceLabel.position = CGPointMake(distanceLabelX, distanceLabelY);
+        _distanceLabel.name = @"distance";
+        [self addChild:_distanceLabel];
         
         // add the menu button
-        menuButton = [[SKSpriteNode alloc] initWithImageNamed:@"menu_button"];
-        [menuButton setScale:0.18];
-        menuButton.position = CGPointMake(menuButtonX, menuButtonY);
-        menuButton.name = @"menu";
-        [self addChild:menuButton];
+        _menuButton = [[SKSpriteNode alloc] initWithImageNamed:@"menu_button"];
+        [_menuButton setScale:0.18];
+        _menuButton.position = CGPointMake(menuButtonX, menuButtonY);
+        _menuButton.name = @"menu";
+        [self addChild:_menuButton];
         
         // add the ninja
         _ninja = [[SKSpriteNode alloc] initWithImageNamed:@"ninja"];
         _ninja.position = CGPointMake(ninjaInitialPositionX, ninjaInitialPositionY);
         _ninja.name = @"ninja";
         [self addChild:_ninja];
+        
+        // actions
+        _moveLeft = [SKAction moveByX:-_ninja.size.width y:0 duration:0.2f];
+        _moveRight = [SKAction moveByX:_ninja.size.width y:0 duration:0.2f];
     }
     
     return self;
@@ -89,18 +108,22 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    /* Called when a touch begins */
-    [self menuButtonClickedAt:touches];
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInNode:self.scene];
     
+    /* Called when a touch begins */
+    [self menuButtonClickedAt:touchPoint];
+    
+    // move the ninja
+    [self moveNinjaToPoint:touchPoint];
 }
 
 // when menu button is clicked
-- (void)menuButtonClickedAt:(NSSet *)touches
+- (void)menuButtonClickedAt:(CGPoint)touchPoint
 {
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
-    SKNode *node = [self nodeAtPoint:location];
+    SKNode *node = [self nodeAtPoint:touchPoint];
     
+    // check if the menu_button is clicked
     if ([node.name isEqualToString:@"menu"])
     {
         SKTransition *transitionAnimation = [SKTransition doorsCloseVerticalWithDuration:0.5];
@@ -125,7 +148,11 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     
     _lastUpdateTime = currentTime;
     
+    // move the background
     [self moveBackground];
+    
+    // update distance label
+    [self updateDistance];
 }
 
 // initialize the scrolling background
@@ -146,17 +173,54 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
 - (void)moveBackground
 {
     [self enumerateChildNodesWithName:@"background" usingBlock:^(SKNode *node, BOOL *stop)
-    {
-        SKSpriteNode *background = (SKSpriteNode *) node;
-        CGPoint backgroundVelocity = CGPointMake(0, -BackgroundVelocity);
-        CGPoint amountToMove = CGPointMultiply(backgroundVelocity, _delta);
-        background.position = CGPointAdd(background.position, amountToMove);
+     {
+         SKSpriteNode *background = (SKSpriteNode *) node;
+         CGPoint backgroundVelocity = CGPointMake(0, -BackgroundVelocity);
+         CGPoint amountToMove = CGPointMultiply(backgroundVelocity, _delta);
+         background.position = CGPointAdd(background.position, amountToMove);
         
-        if (background.position.y <= -background.size.height)
-        {
-            background.position = CGPointMake(background.position.x, background.position.y + background.size.height * 2);
-        }
-    }];
+         if (background.position.y <= -background.size.height)
+         {
+             background.position = CGPointMake(background.position.x, background.position.y + background.size.height * 2);
+         }
+     }];
+}
+
+// move the ninja
+- (void)moveNinjaToPoint:(CGPoint)point
+{
+    // move to the right
+    if ((point.x > _ninja.position.x) && (_ninja.position.x < RightRoadBorderWidth))
+    {
+        [_ninja runAction:_moveRight];
+    }
+    
+    // move to the left
+    if ((point.x < _ninja.position.x) && (_ninja.position.x > LeftRoadBorderWidth))
+    {
+        [_ninja runAction:_moveLeft];
+    }
+}
+
+// calculate distance
+- (NSInteger)calculateDistance
+{
+    _distance = _distance + NinjaVelocity;
+    return _distance;
+}
+
+// update distance
+- (void)updateDistance
+{
+    [self enumerateChildNodesWithName:@"distance" usingBlock:^(SKNode *node, BOOL *stop)
+     {
+         SKLabelNode *distanceLabel = (SKLabelNode *) node;
+         NSInteger updatedDistance = [self calculateDistance];
+         distanceLabel.text = [NSString stringWithFormat:@"%dm", updatedDistance];
+     }];
+    
+    //NSInteger updatedDistance = [self calculateDistance];
+    //_distanceLabel.text = [NSString stringWithFormat:@"%dm", updatedDistance];
 }
 
 @end
