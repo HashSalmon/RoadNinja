@@ -15,6 +15,12 @@ static const float BackgroundVelocity = 150.0f;
 // The ninja's running speed
 static const float NinjaVelocity = 0.05f;
 
+// The cars' speed
+static const float CarVelocity = 200.0f;
+
+// Rate of adding a car
+static const float CarAddedRate = 0.5f;
+
 // the road border width
 static const int LeftRoadBorderWidth = 80;
 static const int RightRoadBorderWidth = 240;
@@ -52,6 +58,7 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     CGFloat _distance;
     NSTimeInterval _delta;
     NSTimeInterval _lastUpdateTime;
+    NSTimeInterval _lastCarAdded;
     NSTimer *_timer;
     
     SKAction *_moveLeft;
@@ -108,7 +115,7 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     [_carXLocations addObject:[NSNumber numberWithInt:156]];
     [_carXLocations addObject:[NSNumber numberWithInt:205]];
     [_carXLocations addObject:[NSNumber numberWithInt:255]];
-    carYLocation = 280.0f;
+    carYLocation = self.size.height;
 }
 
 // add distance label on the screen
@@ -127,7 +134,6 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
 // add menu button on the screen
 - (void)addMenuButton
 {
-    // add the menu button
     _menuButton = [[SKSpriteNode alloc] initWithImageNamed:@"menu_button"];
     [_menuButton setScale:0.18];
     _menuButton.position = CGPointMake(menuButtonX, menuButtonY);
@@ -138,7 +144,6 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
 // add ninja
 - (void)addNinja
 {
-    // add the ninja
     _ninja = [[SKSpriteNode alloc] initWithImageNamed:@"ninja"];
     [_ninja setScale:0.7f];
     _ninja.position = CGPointMake(ninjaInitialPositionX, ninjaInitialPositionY);
@@ -154,14 +159,36 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     SKSpriteNode *car = [SKSpriteNode spriteNodeWithImageNamed:carName];
     car.name = @"car";
     [car setScale:0.6];
+    
     // randomly choose a starting location
     int index = arc4random() % 5;
     NSNumber *carXNumber = _carXLocations[index];
     NSInteger carXLocation = [carXNumber integerValue];
-    
     car.position = CGPointMake(carXLocation, carYLocation);
-    
     [self addChild:car];
+}
+
+- (void)moveCars
+{
+    NSArray *nodes = self.children;
+    
+    for (SKNode *node in nodes)
+    {
+        if (![node.name isEqual:@"background"] && ![node.name isEqual:@"ninja"] && ![node.name isEqual:@"menu"] && ![node.name isEqual:@"distance"])
+        {
+            SKSpriteNode *car = (SKSpriteNode *) node;
+            CGPoint carVelocity = CGPointMake(0, -CarVelocity);
+            CGPoint amountToMove = CGPointMultiply(carVelocity, _delta);
+    
+            car.position = CGPointAdd(car.position, amountToMove);
+            
+            // remove car from the screen
+            if(car.position.y < 0)
+            {
+                [car removeFromParent];
+            }
+        }
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -206,8 +233,17 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     
     _lastUpdateTime = currentTime;
     
+    if (currentTime - _lastCarAdded > CarAddedRate)
+    {
+        _lastCarAdded = currentTime;
+        [self addCars];
+    }
+    
     // move the background
     [self moveBackground];
+    
+    // move the cars
+    [self moveCars];
     
     // update distance label
     [self updateDistance];
@@ -276,9 +312,6 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
          NSInteger updatedDistance = [self calculateDistance];
          distanceLabel.text = [NSString stringWithFormat:@"%dm", updatedDistance];
      }];
-    
-    //NSInteger updatedDistance = [self calculateDistance];
-    //_distanceLabel.text = [NSString stringWithFormat:@"%dm", updatedDistance];
 }
 
 @end
