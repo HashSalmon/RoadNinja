@@ -8,6 +8,12 @@
 
 #import "RoadNinjaGameScene.h"
 #import "RoadNinjaMenuScene.h"
+#import "RoadNinjaGameOverScene.h"
+#import <AVFoundation/AVFoundation.h>
+
+// assign category for collision detection
+static const uint32_t ninjaCategory = 0x1 << 0;
+static const uint32_t carCategory = 0x1 << 1;
 
 // The background moving speed
 static const float BackgroundVelocity = 150.0f;
@@ -23,7 +29,7 @@ static const float CarAddedRate = 0.5f;
 
 // the road border width
 static const int LeftRoadBorderWidth = 80;
-static const int RightRoadBorderWidth = 240;
+static const int RightRoadBorderWidth = 220;
 
 // move duration
 static const float MoveDuration = 0.3f;
@@ -40,11 +46,19 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     return CGPointMake(a.x * scalar, a.y * scalar);
 }
 
+@interface RoadNinjaGameScene()
+
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
+@property (strong, nonatomic) SKAction *collisionSound;
+
+@end
+
 @implementation RoadNinjaGameScene
 {
     SKLabelNode *_distanceLabel;
     SKSpriteNode *_menuButton;
     SKSpriteNode *_ninja;
+    SKSpriteNode *_car;
     
     CGFloat distanceLabelX;
     CGFloat distanceLabelY;
@@ -87,9 +101,17 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
         [self addNinja];
         [self addCars];
         
-        // actions
-        _moveLeft = [SKAction moveByX:-_ninja.size.width y:0 duration:MoveDuration];
-        _moveRight = [SKAction moveByX:_ninja.size.width y:0 duration:MoveDuration];
+        // making self delegate of physics world
+        self.physicsWorld.gravity = CGVectorMake(0, 0);
+        self.physicsWorld.contactDelegate = self;
+        
+        // initialize sound effect
+        //self.collisionSound = [SKAction playSoundFileNamed:@"hit_sound.mp3" waitForCompletion:NO];
+        
+        // mp3 file url
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"hit_sound" withExtension:@"mp3"];
+        NSError *error = nil;
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
     }
     
     return self;
@@ -148,6 +170,21 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     [_ninja setScale:0.7f];
     _ninja.position = CGPointMake(ninjaInitialPositionX, ninjaInitialPositionY);
     _ninja.name = @"ninja";
+    
+    // add sprite kit physicsbody for collision detection
+    _ninja.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_ninja.size.width * 0.5f];
+    _ninja.physicsBody.categoryBitMask = ninjaCategory;
+    _ninja.physicsBody.dynamic = YES;
+    _ninja.physicsBody.contactTestBitMask = carCategory;
+    _ninja.physicsBody.collisionBitMask = 0;
+    _ninja.physicsBody.usesPreciseCollisionDetection = YES;
+    
+    // amount to move
+    CGFloat moveX = _ninja.size.width - 8.0f;
+    
+    // actions
+    _moveLeft = [SKAction moveByX:-moveX y:0 duration:MoveDuration];
+    _moveRight = [SKAction moveByX:moveX y:0 duration:MoveDuration];
     [self addChild:_ninja];
 }
 
@@ -156,16 +193,24 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
 {
     NSInteger carNumber = arc4random() % 6 + 1;
     NSString *carName = [NSString stringWithFormat:@"car%d",carNumber];
-    SKSpriteNode *car = [SKSpriteNode spriteNodeWithImageNamed:carName];
-    car.name = @"car";
-    [car setScale:0.6];
+    _car = [SKSpriteNode spriteNodeWithImageNamed:carName];
+    _car.name = @"car";
+    [_car setScale:0.6f];
+    
+    // add collision detection
+    _car.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_car.size];
+    _car.physicsBody.categoryBitMask = carCategory;
+    _car.physicsBody.dynamic = YES;
+    _car.physicsBody.contactTestBitMask = ninjaCategory;
+    _car.physicsBody.collisionBitMask = 0;
+    _car.physicsBody.usesPreciseCollisionDetection = YES;
     
     // randomly choose a starting location
     int index = arc4random() % 5;
     NSNumber *carXNumber = _carXLocations[index];
     NSInteger carXLocation = [carXNumber integerValue];
-    car.position = CGPointMake(carXLocation, carYLocation);
-    [self addChild:car];
+    _car.position = CGPointMake(carXLocation, carYLocation);
+    [self addChild:_car];
 }
 
 - (void)moveCars
@@ -284,14 +329,16 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
 - (void)moveNinjaToPoint:(CGPoint)point
 {
     // move to the right
-    if ((point.x > _ninja.position.x) && (_ninja.position.x < RightRoadBorderWidth))
+    if ((point.x > (_ninja.position.x + _ninja.size.width)) && ((_ninja.position.x +  _ninja.size.width) < RightRoadBorderWidth))
     {
+        NSLog(@"Right: %f", _ninja.position.x);
         [_ninja runAction:_moveRight];
     }
     
     // move to the left
     if ((point.x < _ninja.position.x) && (_ninja.position.x > LeftRoadBorderWidth))
     {
+        NSLog(@"Left: %f", _ninja.position.x);
         [_ninja runAction:_moveLeft];
     }
 }
@@ -312,6 +359,41 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
          NSInteger updatedDistance = [self calculateDistance];
          distanceLabel.text = [NSString stringWithFormat:@"%dm", updatedDistance];
      }];
+}
+
+// collision occured
+- (void)didBeginContact:(SKPhysicsContact *)contact
+{
+    // ninja body is 0 and car body is 1
+    SKPhysicsBody *ninjaBody;
+    SKPhysicsBody *carBody;
+    
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask)
+    {
+        ninjaBody = contact.bodyA;
+        carBody = contact.bodyB;
+    }
+    else
+    {
+        ninjaBody = contact.bodyB;
+        carBody = contact.bodyA;
+    }
+    
+    if ((ninjaBody.categoryBitMask & ninjaCategory) != 0
+        && (carBody.categoryBitMask & carCategory) != 0)
+    {
+        // play collision sound
+        [self.audioPlayer play];
+    
+        // remove ninja and car
+        [_ninja removeFromParent];
+        [_car removeFromParent];
+        
+        // change to game over scene
+        SKTransition *sceneTransition = [SKTransition fadeWithColor:[UIColor redColor] duration:3.0f];
+        SKScene *roadNinjaGameOverScene = [[RoadNinjaGameOverScene alloc] initWithSize:self.size];
+        [self.view presentScene:roadNinjaGameOverScene transition:sceneTransition];
+    }
 }
 
 @end
