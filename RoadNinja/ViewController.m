@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "RoadNinjaGameScene.h"
+#import "RoadNinjaGameLoadedScene.h"
 
 @implementation ViewController
 
@@ -26,7 +26,7 @@
     skView.showsNodeCount = YES;
     
     // create and configure the scene
-    SKScene *roadNinjaGameScene = [RoadNinjaGameScene sceneWithSize:skView.bounds.size];
+    SKScene *roadNinjaGameScene = [RoadNinjaGameLoadedScene sceneWithSize:skView.bounds.size];
     roadNinjaGameScene.scaleMode = SKSceneScaleModeAspectFill;
     
     // present the scene
