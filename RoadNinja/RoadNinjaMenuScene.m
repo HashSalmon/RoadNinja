@@ -97,7 +97,11 @@
     
     if ([touchNode.name isEqualToString:@"restartButton"])
     {
-        NSLog(@"Restart");
+        SKTransition *transitionAnimation = [SKTransition doorsOpenVerticalWithDuration:0.5];
+        //CGSize gameOverSceneSize = CGSizeMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height * 0.5);
+        RoadNinjaGameScene *gameScene = [RoadNinjaGameScene sceneWithSize:self.size];
+        gameScene.scaleMode = SKSceneScaleModeAspectFill;
+        [self.view presentScene:gameScene transition:transitionAnimation];
     }
 }
 

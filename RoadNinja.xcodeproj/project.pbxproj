@@ -20,6 +20,7 @@
 		CA9BC529190486ED00BCFB78 /* car4.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9BC520190486ED00BCFB78 /* car4.png */; };
 		CA9BC52A190486ED00BCFB78 /* car5.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9BC521190486ED00BCFB78 /* car5.png */; };
 		CA9BC52B190486ED00BCFB78 /* car6.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9BC522190486ED00BCFB78 /* car6.png */; };
+		CADFB0DE190DF3700004DFC9 /* shadow_ninja.png in Resources */ = {isa = PBXBuildFile; fileRef = CADFB0DD190DF3700004DFC9 /* shadow_ninja.png */; };
 		CAFD5EDE18ED2A7B000E9E9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */; };
 		CAFD5EE018ED2A7B000E9E9A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EDF18ED2A7B000E9E9A /* CoreGraphics.framework */; };
 		CAFD5EE218ED2A7B000E9E9A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD5EE118ED2A7B000E9E9A /* UIKit.framework */; };
@@ -65,6 +66,7 @@
 		CA9BC520190486ED00BCFB78 /* car4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car4.png; sourceTree = "<group>"; };
 		CA9BC521190486ED00BCFB78 /* car5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car5.png; sourceTree = "<group>"; };
 		CA9BC522190486ED00BCFB78 /* car6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car6.png; sourceTree = "<group>"; };
+		CADFB0DD190DF3700004DFC9 /* shadow_ninja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow_ninja.png; sourceTree = "<group>"; };
 		CAFD5EDA18ED2A7B000E9E9A /* RoadNinja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoadNinja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFD5EDD18ED2A7B000E9E9A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CAFD5EDF18ED2A7B000E9E9A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -125,6 +127,7 @@
 		CA63A30F18F1B81700DFF47C /* Art */ = {
 			isa = PBXGroup;
 			children = (
+				CADFB0DD190DF3700004DFC9 /* shadow_ninja.png */,
 				CA6D1B031904D82E00ED4F3F /* road_bg.png */,
 				CA9BC51E190486ED00BCFB78 /* menu_button.png */,
 				CA9BC51F190486ED00BCFB78 /* ninja.png */,
@@ -300,6 +303,7 @@
 			files = (
 				CA4D82AE19062460001544AD /* hit_sound.mp3 in Resources */,
 				CA6D1B041904D82E00ED4F3F /* road_bg.png in Resources */,
+				CADFB0DE190DF3700004DFC9 /* shadow_ninja.png in Resources */,
 				CA9BC526190486ED00BCFB78 /* car3.png in Resources */,
 				CA9BC52B190486ED00BCFB78 /* car6.png in Resources */,
 				CAFD5EEA18ED2A7B000E9E9A /* InfoPlist.strings in Resources */,

@@ -77,6 +77,8 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     
     SKAction *_moveLeft;
     SKAction *_moveRight;
+    SKAction *_fadeOutNinja;
+    SKAction *_fadeInNinja;
     
     NSMutableArray *_carXLocations;
     NSInteger carYLocation;
@@ -180,11 +182,13 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
     _ninja.physicsBody.usesPreciseCollisionDetection = YES;
     
     // amount to move
-    CGFloat moveX = _ninja.size.width - 8.0f;
+    CGFloat moveX = _ninja.size.width + 15.0f;
     
     // actions
     _moveLeft = [SKAction moveByX:-moveX y:0 duration:MoveDuration];
     _moveRight = [SKAction moveByX:moveX y:0 duration:MoveDuration];
+    _fadeOutNinja = [SKAction fadeAlphaTo:0.7f duration:0.05f];
+    _fadeInNinja = [SKAction fadeInWithDuration:0.05f];
     [self addChild:_ninja];
 }
 
@@ -192,7 +196,7 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
 - (void)addCars
 {
     NSInteger carNumber = arc4random() % 6 + 1;
-    NSString *carName = [NSString stringWithFormat:@"car%d",carNumber];
+    NSString *carName = [NSString stringWithFormat:@"car%ld",(long)carNumber];
     _car = [SKSpriteNode spriteNodeWithImageNamed:carName];
     _car.name = @"car";
     [_car setScale:0.6f];
@@ -329,17 +333,21 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
 - (void)moveNinjaToPoint:(CGPoint)point
 {
     // move to the right
-    if ((point.x > (_ninja.position.x + _ninja.size.width)) && ((_ninja.position.x +  _ninja.size.width) < RightRoadBorderWidth))
+    if ((point.x > (_ninja.position.x + _ninja.size.width)) && (_ninja.position.x  < RightRoadBorderWidth))
     {
         NSLog(@"Right: %f", _ninja.position.x);
-        [_ninja runAction:_moveRight];
+        SKAction *sequenceActions = [SKAction sequence:@[_fadeOutNinja, _moveRight, _fadeInNinja]];
+
+        [_ninja runAction:sequenceActions];
     }
     
     // move to the left
     if ((point.x < _ninja.position.x) && (_ninja.position.x > LeftRoadBorderWidth))
     {
         NSLog(@"Left: %f", _ninja.position.x);
-        [_ninja runAction:_moveLeft];
+        SKAction *sequenceActions = [SKAction sequence:@[_fadeOutNinja, _moveLeft, _fadeInNinja]];
+
+        [_ninja runAction:sequenceActions];
     }
 }
 
@@ -357,13 +365,14 @@ static inline CGPoint CGPointMultiply(const CGPoint a, const CGFloat scalar)
      {
          SKLabelNode *distanceLabel = (SKLabelNode *) node;
          NSInteger updatedDistance = [self calculateDistance];
-         distanceLabel.text = [NSString stringWithFormat:@"%dm", updatedDistance];
+         distanceLabel.text = [NSString stringWithFormat:@"%ldm", (long)updatedDistance];
      }];
 }
 
 // collision occured
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
+    NSLog(@"collision detection");
     // ninja body is 0 and car body is 1
     SKPhysicsBody *ninjaBody;
     SKPhysicsBody *carBody;
